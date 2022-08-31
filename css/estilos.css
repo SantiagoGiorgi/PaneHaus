@@ -1,40 +1,91 @@
-
-
 body {
-	background-image: radial-gradient(circle at 57% 36%, hsla(263,0%,78%,0.04) 0%, hsla(263,0%,78%,0.04) 10%,transparent 10%, transparent 100%),radial-gradient(circle at 22% 61%, hsla(263,0%,78%,0.04) 0%, hsla(263,0%,78%,0.04) 36%,transparent 36%, transparent 100%),radial-gradient(circle at 68% 97%, hsla(263,0%,78%,0.04) 0%, hsla(263,0%,78%,0.04) 41%,transparent 41%, transparent 100%),radial-gradient(circle at 57% 89%, hsla(263,0%,78%,0.04) 0%, hsla(263,0%,78%,0.04) 30%,transparent 30%, transparent 100%),radial-gradient(circle at 39% 80%, hsla(263,0%,78%,0.04) 0%, hsla(263,0%,78%,0.04) 22%,transparent 22%, transparent 100%),radial-gradient(circle at 88% 71%, hsla(263,0%,78%,0.04) 0%, hsla(263,0%,78%,0.04) 30%,transparent 30%, transparent 100%),linear-gradient(0deg, rgb(255,255,255),rgb(255,255,255));
+    background-image: radial-gradient(
+            circle at 57% 36%,
+            hsla(263, 0%, 78%, 0.04) 0%,
+            hsla(263, 0%, 78%, 0.04) 10%,
+            transparent 10%,
+            transparent 100%
+        ),
+        radial-gradient(
+            circle at 22% 61%,
+            hsla(263, 0%, 78%, 0.04) 0%,
+            hsla(263, 0%, 78%, 0.04) 36%,
+            transparent 36%,
+            transparent 100%
+        ),
+        radial-gradient(
+            circle at 68% 97%,
+            hsla(263, 0%, 78%, 0.04) 0%,
+            hsla(263, 0%, 78%, 0.04) 41%,
+            transparent 41%,
+            transparent 100%
+        ),
+        radial-gradient(
+            circle at 57% 89%,
+            hsla(263, 0%, 78%, 0.04) 0%,
+            hsla(263, 0%, 78%, 0.04) 30%,
+            transparent 30%,
+            transparent 100%
+        ),
+        radial-gradient(
+            circle at 39% 80%,
+            hsla(263, 0%, 78%, 0.04) 0%,
+            hsla(263, 0%, 78%, 0.04) 22%,
+            transparent 22%,
+            transparent 100%
+        ),
+        radial-gradient(
+            circle at 88% 71%,
+            hsla(263, 0%, 78%, 0.04) 0%,
+            hsla(263, 0%, 78%, 0.04) 30%,
+            transparent 30%,
+            transparent 100%
+        ),
+        linear-gradient(0deg, rgb(255, 255, 255), rgb(255, 255, 255));
 }
 
 .gridContainer {
     display: grid;
-    grid-template-areas: 
-    "header header"
-     "imagenesIni imagenesIni"
-    "encabezadoInicio  encabezadoInicio"
-    "textoInicio imgTextoInicio"
-    "footerRedes footerRedes";
+    grid-template-areas:
+        "header header"
+        "imagenesIni imagenesIni"
+        "encabezadoInicio  encabezadoInicio"
+        /* modifico para que textoInicio ocupe ambas columnas */
+        "textoInicio textoInicio"
+        "footerRedes footerRedes";
     grid-template-columns: 50% 50%;
-    grid-template-rows: auto ;
- }
+    grid-template-rows: auto;
+}
 
 header {
     grid-area: header;
     display: flex;
     justify-content: space-around;
+    /* para que baje cuando no quepa en el ancho */
+    flex-wrap: wrap;
 }
+
 nav ul {
     display: flex;
+    /* height para poder aplicar el -> align items: lo centra verticalmente */
+    height: 100%;
+    align-items: center;
     list-style-type: none;
 }
-nav ul li a{
-    padding: 10px; 
-    font-size: 20px;
+
+nav ul li a {
+    /* padding y font-size menores para que se adapte, ver más en el media query que está un poco más abajo */
+    padding: 6px;
+    font-size: 12px;
     font-weight: bolder;
     list-style-type: none;
+    /* este position para ubicarlo a 80px del top está mal empleado.Se deja el position para el efecto hover  pero se elimina el top de ubicacion, este problema es solucionado con el align items de nav ul*/
     position: relative;
-    top: 80px;
+    /*  top: 80px; */
     font-family: sans-serif;
 }
-li a:after{
+
+li a:after {
     content: "";
     position: absolute;
     background-color: #ff3c78;
@@ -44,20 +95,32 @@ li a:after{
     bottom: -10px;
     transition: 0.3s;
 }
-li a:hover{
+
+li a:hover {
     color: black;
 }
-li a:hover:after{
+
+li a:hover:after {
     width: 100%;
 }
 
-section.encabezadoInicio{
+/* necesitas aplicar media queries para el correcto ajuste de los elementos en las distintas pantallas */
+/* aquí te estoy aplicando mobile first, todo lo que está fuera del media query es para mobile, lo que está dentro es para dispositivos a partir de 768 px de ancho de pantalla */
+@media screen and (min-width: 768px) {
+    nav ul li a {
+        /* en este caso simplemente estoy devolviendo el tamaño que estabas usando anteriormente, mientras que por fuera del media query, arriba, reduje un poco estos tamaños para que se adapten bien */
+        padding: 10px;
+        font-size: 20px;
+    }
+}
+
+section.encabezadoInicio {
     grid-area: encabezadoInicio;
     display: flex;
     justify-content: center;
-
 }
-section.encabezadoInicio h1{
+
+section.encabezadoInicio h1 {
     color: black;
     font-size: 45px;
     font-family: sans-serif;
@@ -68,13 +131,14 @@ section.encabezadoInicio h1{
     position: relative;
     animation: text 3s 1;
 }
-section.imagenesIni{
+
+section.imagenesIni {
     grid-area: imagenesIni;
     display: flex;
     justify-content: center;
 }
-section.imagenesIni img{
 
+section.imagenesIni img {
     overflow: hidden;
     position: relative;
     display: inline-block;
@@ -82,13 +146,23 @@ section.imagenesIni img{
     border-radius: 10px;
     box-shadow: 2px 4px 8px;
 }
-       
-section.textoInicio{
+
+section.textoInicio {
     grid-area: textoInicio;
     display: flex;
-    flex-direction: column;
+    /* eliminé el flex-direction column */
     justify-content: center;
-    margin-bottom:50px;
+    margin-bottom: 50px;
+    /* flex wrap en dispositivos pequeños, para que baje cuando no quepa en el ancho de pantalla */
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    section.textoInicio {
+        /* valor no wrap, para que no se baje en tamaños desde 768px */
+        flex-wrap: nowrap;
+    }
 }
 
 section.textoInicio p {
@@ -96,60 +170,85 @@ section.textoInicio p {
     color: #000000;
     text-align: justify;
     font-size: 20px;
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-weight: 500;
     margin: 50px;
     letter-spacing: 1px;
     position: relative;
     animation: text 3s 1;
- }
- section.imgTextoInicio {
+}
+
+.imgTextoInicio {
     grid-area: imgTextoInicio;
     display: flex;
     justify-content: center;
-    margin-bottom:50px;
+    margin-bottom: 50px;
+}
 
- }
-section.imgTextoInicio img {
+.imgTextoInicio img {
     overflow: hidden;
-    position: relative;
     display: inline-block;
     margin: 30px;
     border-radius: 10px;
     box-shadow: 2px 4px 8px;
+    /* tamaño de la imagen en dispositivos pequeños, recuerda que estoy trabajando con mobile first */
+    width: 300px;
+    object-fit: cover;
 }
-footer{
+
+@media screen and (min-width: 998px) {
+    .imgTextoInicio img {
+        /* tamaño de la imagen en dispositivos de ancho de pantalla desde 998px */
+        width: 600px;
+    }
+}
+
+footer {
     grid-area: footerRedes;
-    background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+    background: linear-gradient(
+        112.1deg,
+        rgb(32, 38, 57) 11.4%,
+        rgb(63, 76, 119) 70.2%
+    );
     display: flex;
     justify-content: space-around;
     align-items: center;
-      }
-footer.footerRedes{
+}
+
+footer.footerRedes {
     font-size: 15px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     letter-spacing: 1px;
     position: relative;
     animation: text 3s 1;
+    width: 100%;
 }
+
 footer div p {
     color: white;
     display: flex;
-    justify-content: center ;
+    justify-content: center;
 }
 
+@media screen and (max-width: 768px) {
+    footer {
+        /* valor no wrap, para que no se baje en tamaños desde 768px */
+        flex-wrap:  wrap;
+    }
+}
 
 .gridProductos {
     display: grid;
-    grid-template-areas: 
-    "header"
-    "imagenesIni"
-    "encabezadoInicio"
-    "imagenesProducto"
-    "footerRedes";
-    grid-template-columns:1fr;
-    grid-template-rows:auto auto auto auto auto;
-    }
+    grid-template-areas:
+        "header"
+        "imagenesIni"
+        "encabezadoInicio"
+        "imagenesProducto"
+        "footerRedes";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+}
 
 section.imagenesProducto {
     grid-area: imagenesProducto;
@@ -157,45 +256,55 @@ section.imagenesProducto {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
     margin-bottom: 30px;
+}
 
- }
 section.imagenesProducto div {
     display: grid;
     align-content: center;
     justify-content: center;
     margin-bottom: 50px;
 }
-section.imagenesProducto div img{
+
+section.imagenesProducto div img {
     overflow: hidden;
     position: relative;
     margin: 10px auto;
     border-radius: 10px;
     box-shadow: 1px 2px 4px;
 }
-section.imagenesProducto p{
-text-align: center;
-font-weight: bolder;
-  }
+
+section.imagenesProducto p {
+    text-align: center;
+    font-weight: bolder;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     color: #3f3f3f;
     font-size: 18px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-decoration: none
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    text-decoration: none;
 }
 
 section.imagenesIni iframe {
     margin: 50px;
 }
 
+.tabla {
+    font-size: 14px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
 
- .tabla {
- 	font-size: 14px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
- }
-
- .Preguntas {
+.Preguntas {
     list-style-type: none;
+}
+
+ section.form {
+    display: flex;
+    flex-direction: row ;
+    justify-content:center ;
  }

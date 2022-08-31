@@ -8,7 +8,6 @@
 	<link href="../css/estilos.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div> 
 		<header>
 			<img src="../assets/img/pane.png" alt="logo" width="200" height="200">
 			<nav>
@@ -26,46 +25,47 @@
 		</section>
 			<section class="encabezadoInicio">
 			<h1>HACE TU PEDIDO</h1>
-		</section>
-			<section>	
-				<form action="#">
-					<label for="text">Nombre: <br>
-						<input type="text" placeholder="" name="text"><br>
-					</label>
-					<label for="whastsapp">Whatsapp: <br>
-						<input type="whatsapp" placeholder="" name="whatsapp"><br>
-					</label>
-					<label for="direccion"> Direccion y horarios para recibir tu pedido:<br>
+		</section>	
+		<section class="form">	
+			<form action="#">
+				<label for="text">Nombre: <br>
+					<input type="text" placeholder="" name="text"><br>
+				</label>
+				<label for="whastsapp">Whatsapp: <br>
+					<input type="whatsapp" placeholder="" name="whatsapp"><br>
+				</label>
+				<label for="direccion"> Direccion de entrega<br>
 					<textarea placeholder=""></textarea>
-					</label> <br>
-					 Que pan te gustaria pedir? <br> 
-				    <select name="pan" id="pan"> 
-						<option value="x">Integral con semillas</option>
-						<option value="y">Blanco</option>
-						<option value="z">Zapallo</option>
-					</select> <br>
-					<label for="cantidad">Cantidad: <br>
-						<input type="cantidad" placeholder="" name="cantidad"><br>
-					</label>
+				</label> <br>
+				Que pan te gustaria pedir? <br> 
+		    	<select name="pan" id="pan"> 
+					<option value="x">Integral con semillas</option>
+					<option value="y">Blanco</option>
+					<option value="z">Zapallo</option>
+				</select> <br>
+				<label for="cantidad">Cantidad: <br>
+					<input type="cantidad" placeholder="" name="cantidad"><br>
+				</label>
 				<div>Formato: <br>
-			 		<input type="radio" name="formato" value="campo"> Campo
+					<input type="radio" name="formato" value="campo"> Campo
 					<input type="radio" name="formato" value="molde"> Molde
 				</div>
-				<div> Te gustaria agregar alguno de estos productos? <br>
-				<select name="productos" id="productos"> 
-					<option value="foccacia">Foccacia</option>
-					<option value="queso">Scones de Queso</option>
-					<option value="hamburguesa">Pan de Hamburguesa</option>
-				</select> <br>
+				<div> Te gustaria agregar algun producto? <br>
+					<select name="productos" id="productos"> 
+						<option value="foccacia">Foccacia</option>
+						<option value="queso">Scones de Queso</option>
+						<option value="hamburguesa">Pan de Hamburguesa</option>
+					</select> <br>
 				</div>
-				<div> <p>Queres recibir mas informacion sobre nuestros semanalmente?
-				<input type="checkbox" name="acepta" value="1"> </p>
+				<div> <p>Queres recibir mas informacion?
+					<input type="checkbox" name="acepta" value="1"> </p>
 				</div>
 				<input type="submit" value="si">
 				<input type="reset" value="limpiar">
 			</form>
-	<br> </br>
-	<footer class= "footerRedes">
+		</section>	
+			<br> </br>
+		<footer class= "footerRedes">
 			<div class=footerRedes>
 				<a href="https://www.instagram.com/pane.haus/?hl=es"> <img src="../assets/img/logoInstagram.png" alt=logoInstagram> </a> <a href="https://wa.me/5491121827888"> <img src="../assets/img/logoWhatsapp.png" alt=logoWhatsapp> </a> 
 				<a href="https://www.instagram.com/pane.haus/?hl=es"> <img src="../assets/img/logoFacebook.png" alt=logoFacebook> </a> 
